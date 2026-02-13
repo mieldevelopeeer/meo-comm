@@ -235,26 +235,28 @@ export default function Record({ auth, records = [], offices = [] }) {
                     <thead>
                         <tr>
                             <th>No.</th>
+                            <th>Date</th>
                             <th>Type</th>
                             <th>Proponent</th>
                             <th>Particulars</th>
                             <th>Office</th>
                             <th>In Charge</th>
                             <th>Status</th>
-                            <th>Date</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
                         ${filteredRecords.map((record, index) => `
                             <tr>
                                 <td>${index + 1}</td>
+                                <td>${formatDateShort(record.created_at)}</td>
                                 <td>${record.type || 'other'}</td>
                                 <td>${record.proponent || '-'}</td>
                                 <td>${record.particulars || '-'}</td>
                                 <td>${record.office?.name || '-'}</td>
                                 <td>${record.incharge?.full_name || '-'}</td>
                                 <td>${record.status}</td>
-                                <td>${formatDateShort(record.created_at)}</td>
+                              
                             </tr>
                         `).join('')}
                     </tbody>
@@ -619,6 +621,7 @@ export default function Record({ auth, records = [], offices = [] }) {
                                         <thead className="bg-gray-50">
                                             <tr>
                                                 <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">No.</th>
+                                                 <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Date</th>
                                                 <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Type</th>
                                                
                                                 <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Proponent</th>
@@ -626,7 +629,7 @@ export default function Record({ auth, records = [], offices = [] }) {
                                                 <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Office</th>
                                                 <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">In Charge</th>
                                                 <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Status</th>
-                                                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Date</th>
+                                               
                                             </tr>
                                         </thead>
                                         <tbody className="bg-white divide-y divide-gray-200">
@@ -634,6 +637,9 @@ export default function Record({ auth, records = [], offices = [] }) {
                                                 <tr key={record.id} className="hover:bg-gray-50 transition-colors">
                                                     <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
                                                         {startIndex + index + 1}
+                                                    </td>
+                                                    <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
+                                                        {formatDateShort(record.created_at)}
                                                     </td>
                                                     <td className="px-4 py-3 whitespace-nowrap">
                                                         <span className={`px-2 py-1 inline-flex text-xs font-medium rounded border ${getTypeColor(record.type)}`}>
@@ -660,9 +666,7 @@ export default function Record({ auth, records = [], offices = [] }) {
                                                             {record.status}
                                                         </span>
                                                     </td>
-                                                    <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
-                                                        {formatDateShort(record.created_at)}
-                                                    </td>
+                                                    
                                                 </tr>
                                             ))}
                                         </tbody>
@@ -812,26 +816,28 @@ export default function Record({ auth, records = [], offices = [] }) {
                                     <thead>
                                         <tr className="bg-gray-100">
                                             <th className="border border-gray-300 px-3 py-2 text-left text-xs font-semibold">No.</th>
+                                            <th className="border border-gray-300 px-3 py-2 text-left text-xs font-semibold">Date</th>
                                             <th className="border border-gray-300 px-3 py-2 text-left text-xs font-semibold">Type</th>
                                             <th className="border border-gray-300 px-3 py-2 text-left text-xs font-semibold">Proponent</th>
                                             <th className="border border-gray-300 px-3 py-2 text-left text-xs font-semibold">Particulars</th>
                                             <th className="border border-gray-300 px-3 py-2 text-left text-xs font-semibold">Office</th>
                                             <th className="border border-gray-300 px-3 py-2 text-left text-xs font-semibold">In Charge</th>
                                             <th className="border border-gray-300 px-3 py-2 text-left text-xs font-semibold">Status</th>
-                                            <th className="border border-gray-300 px-3 py-2 text-left text-xs font-semibold">Date</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {filteredRecords.map((record, index) => (
                                             <tr key={record.id} className="hover:bg-gray-50">
                                                 <td className="border border-gray-300 px-3 py-2 text-sm">{index + 1}</td>
+                                                <td className="border border-gray-300 px-3 py-2 text-sm">{formatDateShort(record.created_at)}</td>
                                                 <td className="border border-gray-300 px-3 py-2 text-sm">{record.type || 'other'}</td>
                                                 <td className="border border-gray-300 px-3 py-2 text-sm">{record.proponent || '-'}</td>
                                                 <td className="border border-gray-300 px-3 py-2 text-sm">{record.particulars || '-'}</td>
                                                 <td className="border border-gray-300 px-3 py-2 text-sm">{record.office?.name || '-'}</td>
                                                 <td className="border border-gray-300 px-3 py-2 text-sm">{record.incharge?.full_name || '-'}</td>
                                                 <td className="border border-gray-300 px-3 py-2 text-sm">{record.status}</td>
-                                                <td className="border border-gray-300 px-3 py-2 text-sm">{formatDateShort(record.created_at)}</td>
+                                               
                                             </tr>
                                         ))}
                                     </tbody>
